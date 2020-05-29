@@ -21,3 +21,26 @@ C:\Users\micke\source\repos\CursoCSharp actividad3 WindowsForms\bin\Debug\Newton
 C:\Users\micke\source\repos\CursoCSharp actividad3 WindowsForms\bin\Debug\System.Threading.Tasks.Dataflow.xml
 C:\Users\micke\source\repos\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp_actividad3_WindowsForms.Form1.resources
 C:\Users\micke\source\repos\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.csproj.CopyComplete
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\CursoCSharp actividad3 WindowsForms.exe.config
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\CursoCSharp actividad3 WindowsForms.exe
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\CursoCSharp actividad3 WindowsForms.pdb
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Cassandra.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\LZ4.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Cassandra.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.csprojAssemblyReference.cache
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp_actividad3_WindowsForms.Form1.resources
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp_actividad3_WindowsForms.Properties.Resources.resources
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.csproj.GenerateResource.cache
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.csproj.CopyComplete
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.exe
+C:\Users\micke\Documents\GitHub\Tercer-Examen-Parcial\CSharp\CursoCSharp actividad3 WindowsForms\obj\Debug\CursoCSharp actividad3 WindowsForms.pdb

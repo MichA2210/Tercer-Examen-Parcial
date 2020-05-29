@@ -35,7 +35,15 @@ namespace CursoCSharp_actividad3_WindowsForms
                 alumno.Apellido = r.GetValue<string>(2);
                 alumno.Genero = r.GetValue<string>(3);
                 alumno.Materias = r.GetValue<IEnumerable<string>>(4);
-                alumno.FechaNacimiento = r.GetValue<DateTimeOffset>(5);
+                Nullable<DateTimeOffset> dto = r.GetValue<Nullable<DateTimeOffset>>(5);
+                if (dto.HasValue)
+                {
+                    alumno.FechaNacimiento = dto.Value;
+                }
+                else
+                {
+                    alumno.FechaNacimiento = new DateTime(1753, 01, 01);
+                }
                 alumno.Carrera = r.GetValue<string>(6);
 
                 alumnos.AddLast(alumno);  //Insercion de la informacion de Cassandra en la Lista Ligada
@@ -73,6 +81,8 @@ namespace CursoCSharp_actividad3_WindowsForms
 
             using (var session = cluster.Connect(connectStr))
             {
+                if (alumno.Materias == null)
+                    alumno.Materias= "".Cast<string>();
                 List<string> mats = alumno.Materias.ToList(); //recuperar materias como lista
                 string materias = "[";
                 for (int i = 0; i < mats.Count; ++i)
@@ -95,8 +105,8 @@ namespace CursoCSharp_actividad3_WindowsForms
                 string date = alumno.FechaNacimiento.DateTime.Year.ToString() + "-" + m + "-" + d;
                 //date = date.Replace("/", "-");
 
-                session.Execute(string.Format("INSERT INTO keyspace1.alumnos (matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera)"
-                    + " VALUES({0},'{1}','{2}','{3}',{4},'{5}', '{6}')",
+                session.Execute(string.Format("BEGIN BATCH INSERT INTO keyspace1.alumnos (matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera)"
+                    + " VALUES({0},'{1}','{2}','{3}',{4},'{5}', '{6}') APPLY BATCH",
                     alumno.Matricula, alumno.Nombre, alumno.Apellido, alumno.Genero, materias, date, alumno.Carrera));
             }
         }

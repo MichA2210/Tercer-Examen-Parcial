@@ -59,6 +59,7 @@
             this.eliminarTodosLasFechasDeNacimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarTodosLosLasMateriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarATodoElAlumnadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,9 +167,9 @@
             // AlumnosExistentes
             // 
             this.AlumnosExistentes.FormattingEnabled = true;
-            this.AlumnosExistentes.Location = new System.Drawing.Point(281, 44);
+            this.AlumnosExistentes.Location = new System.Drawing.Point(281, 57);
             this.AlumnosExistentes.Name = "AlumnosExistentes";
-            this.AlumnosExistentes.Size = new System.Drawing.Size(234, 446);
+            this.AlumnosExistentes.Size = new System.Drawing.Size(234, 433);
             this.AlumnosExistentes.TabIndex = 19;
             this.AlumnosExistentes.DoubleClick += new System.EventHandler(this.AlumnosExistentes_DoubleClick);
             // 
@@ -219,11 +220,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 306);
+            this.label13.Location = new System.Drawing.Point(12, 305);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(151, 13);
+            this.label13.Size = new System.Drawing.Size(157, 13);
             this.label13.TabIndex = 31;
-            this.label13.Text = "Doble click para borrar materia";
+            this.label13.Text = "(Doble click para borrar materia)";
             // 
             // dateTimePicker1
             // 
@@ -330,11 +331,21 @@
             this.eliminarATodoElAlumnadoToolStripMenuItem.Text = "Eliminar a todo el Alumnado";
             this.eliminarATodoElAlumnadoToolStripMenuItem.Click += new System.EventHandler(this.eliminarATodoElAlumnadoToolStripMenuItem_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(278, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 13);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "(Doble click para mostar alumno)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 522);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Carrera);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
@@ -402,6 +413,7 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarTodosLasFechasDeNacimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarTodosLosLasMateriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarATodoElAlumnadoToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
     }
 }
 

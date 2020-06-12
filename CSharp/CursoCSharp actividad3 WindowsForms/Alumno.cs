@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CursoCSharp_actividad3_WindowsForms
 {
-    class Alumno
+    public class Alumno
     {
         public uint Matricula { get; set; }
         public string Nombre { get; set; }

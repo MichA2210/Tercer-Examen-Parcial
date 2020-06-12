@@ -16,8 +16,11 @@ namespace CursoCSharp_actividad3_WindowsForms
     {
 
         public int flag = 0;
+        public CassandraConection conection;
+
         public Form1()
         {
+            conection = new CassandraConection();
             InitializeComponent();
         }
 
@@ -30,11 +33,19 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void Form1_Load(object sender, EventArgs e)
         {
             //Genero.Items.Add("Masculino"); Genero.Items.Add("Femenino"); //Así es por codigo, yo lo hice directamente.
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
-            foreach (Alumno a in ListaAlumnos)
+            try
             {
-                AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
+                var ListaAlumnos = conection.GetAlumnos();
+                foreach (Alumno a in ListaAlumnos)
+                {
+                    AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception");
+            }
+            
         }
 
         private void Agregar_Click(object sender, EventArgs e)
@@ -50,7 +61,7 @@ namespace CursoCSharp_actividad3_WindowsForms
 
             #endregion
 
-            if (CassandraConection.MatriculaExiste(uint.Parse(Matricula.Text)) == true)
+            if (conection.MatriculaExiste(uint.Parse(Matricula.Text)) == true)
             {
                 MessageBox.Show("Un alumno con esta matricula ya existe", "Error");
                 flag++;
@@ -112,8 +123,8 @@ namespace CursoCSharp_actividad3_WindowsForms
                     alumno.Materias = Materias.Items.Cast<string>();
                     alumno.FechaNacimiento = dateTimePicker1.Value;
                     alumno.Carrera = Carrera.Text;
-              
-                    CassandraConection.AltaAlumno(alumno);
+
+                    conection.AltaAlumno(alumno);
                     MessageBox.Show("Alumno registrado exitosamente!", "Exito");
 
                     Nombre.Text = "";
@@ -123,7 +134,7 @@ namespace CursoCSharp_actividad3_WindowsForms
                     Materias.Items.Clear();
 
                     AlumnosExistentes.Items.Clear();
-                    var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+                    var ListaAlumnos = conection.GetAlumnos();
                     foreach (Alumno a in ListaAlumnos)
                     {
                         AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
@@ -162,7 +173,7 @@ namespace CursoCSharp_actividad3_WindowsForms
             {
                 int indiceAl = AlumnosExistentes.SelectedIndex;
                 string _Matricula = AlumnosExistentes.SelectedItem.ToString().Split(new char[] { ' ' })[0];
-                var _Alumno = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos where matricula = " + _Matricula);
+                var _Alumno = conection.GetAlumnoMatricula(uint.Parse(_Matricula));
                 foreach (Alumno a in _Alumno)
                 {
                     Nombre.Text = a.Nombre;
@@ -269,7 +280,7 @@ namespace CursoCSharp_actividad3_WindowsForms
                     alumno.FechaNacimiento = dateTimePicker1.Value;
                     alumno.Carrera = Carrera.Text;
 
-                    CassandraConection.AltaAlumno(alumno);
+                    conection.AltaAlumno(alumno);
                     MessageBox.Show("Alumno modificado exitosamente!", "Exito");
 
                     Nombre.Text = "";
@@ -279,7 +290,7 @@ namespace CursoCSharp_actividad3_WindowsForms
                     Materias.Items.Clear();
 
                     AlumnosExistentes.Items.Clear();
-                    var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+                    var ListaAlumnos = conection.GetAlumnos();
                     foreach (Alumno a in ListaAlumnos)
                     {
                         AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
@@ -297,7 +308,7 @@ namespace CursoCSharp_actividad3_WindowsForms
         {
             int indiceAl = AlumnosExistentes.SelectedIndex;
             string _Matricula = AlumnosExistentes.SelectedItem.ToString().Split(new char[]{' '})[0];
-            CassandraConection.DeleteAlumno(uint.Parse(_Matricula));
+            conection.DeleteAlumno(uint.Parse(_Matricula));
             AlumnosExistentes.Items.RemoveAt(indiceAl);
         }
 
@@ -306,11 +317,11 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void eliminarTodosLosNombresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnosExistentes.Items.Clear();
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
             foreach (Alumno a in ListaAlumnos)
             {
                 a.Nombre = null;
-                CassandraConection.AltaAlumno(a);
+                conection.AltaAlumno(a);
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
             Nombre.Text = "";
@@ -320,11 +331,11 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void eliminarTodosLosApellidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnosExistentes.Items.Clear();
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
             foreach (Alumno a in ListaAlumnos)
             {
                 a.Apellido = null;
-                CassandraConection.AltaAlumno(a);
+                conection.AltaAlumno(a);
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
 
@@ -335,11 +346,11 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void eliminarTodosLosGenerosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnosExistentes.Items.Clear();
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
             foreach (Alumno a in ListaAlumnos)
             {
                 a.Genero = null;
-                CassandraConection.AltaAlumno(a);
+                conection.AltaAlumno(a);
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
             Genero.Text = "";
@@ -349,11 +360,11 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void eliminarTodosLasCarrerasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnosExistentes.Items.Clear();
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
             foreach (Alumno a in ListaAlumnos)
             {
                 a.Carrera = null;
-                CassandraConection.AltaAlumno(a);
+                conection.AltaAlumno(a);
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
             Carrera.Text = "";
@@ -364,13 +375,13 @@ namespace CursoCSharp_actividad3_WindowsForms
         {
             AlumnosExistentes.Items.Clear();
             
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
 
             foreach (Alumno a in ListaAlumnos)
             {
                 //a.FechaNacimiento = dto;
                 //a.FechaNacimiento = null;
-                CassandraConection.ExecNonQuery(string.Format("delete fecha_nacimiento from keyspace1.alumnos WHERE matricula = {0}", a.Matricula.ToString()));
+                conection.DeleteAlumno(a);
                
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
@@ -381,12 +392,12 @@ namespace CursoCSharp_actividad3_WindowsForms
         private void eliminarTodosLosLasMateriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnosExistentes.Items.Clear();
-            var ListaAlumnos = CassandraConection.execQuery("select matricula, nombre, apellido, genero, materias, fecha_nacimiento, carrera from alumnos");
+            var ListaAlumnos = conection.GetAlumnos();
             foreach (Alumno a in ListaAlumnos)
             {
                 // a.Materias = null;
                 a.Materias = "".Cast<string>();
-                CassandraConection.AltaAlumno(a);
+                conection.AltaAlumno(a);
                 AlumnosExistentes.Items.Add(a.Matricula + " " + a.Nombre + " " + a.Apellido);
             }
             Materias.Items.Clear();
@@ -395,7 +406,7 @@ namespace CursoCSharp_actividad3_WindowsForms
 
         private void eliminarATodoElAlumnadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CassandraConection.ExecNonQuery("truncate alumnos");
+            conection.DeleteAlumnos();
             Nombre.Text = "";
             Apellido.Text = "";
             Carrera.Text = "";
